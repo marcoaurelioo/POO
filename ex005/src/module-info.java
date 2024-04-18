@@ -4,5 +4,5 @@
 /**
  * 
  */
-module ex5 {
+module ex005 {
 }
