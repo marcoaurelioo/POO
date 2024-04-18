@@ -1,26 +1,25 @@
 package hotelaria;
-import java.util.Date;
 
 
 public class Diaria {
-    private Date dataDiaria;
+    private long numDias;
     private double valorDiaria;
 
-    public Diaria(Date dataDiaria, double valorDiaria) {
-        this.dataDiaria = dataDiaria;
+    public Diaria(long numDias, double valorDiaria) {
+        this.numDias = numDias;
         this.valorDiaria = valorDiaria;
     }
 
     public double consultarDiaria() {
-        return valorDiaria;
+        return valorDiaria * numDias;
     }
 
-	public Date getDataDiaria() {
-		return dataDiaria;
+	public long getNumDias() {
+		return numDias;
 	}
 
-	public void setDataDiaria(Date dataDiaria) {
-		this.dataDiaria = dataDiaria;
+	public void setNumDias(long numDias) {
+		this.numDias = numDias;
 	}
 
 	public double getValorDiaria() {

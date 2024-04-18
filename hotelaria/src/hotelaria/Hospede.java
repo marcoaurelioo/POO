@@ -1,39 +1,34 @@
 package hotelaria;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Hospede extends Pessoa{
 	
-	private long cpfHospede;
+    private long cpfHospede;
     private String paisHospede;
-    private List<Reserva> reservas;
-    private List<Estadia> estadias;
 
     public Hospede(String nome, String email, long cpfHospede, String paisHospede) {
         super(nome, email);
         this.cpfHospede = cpfHospede;
         this.paisHospede = paisHospede;
-        this.reservas = new ArrayList<>();
-        this.estadias = new ArrayList<>();
     }
 
     public String consultarDados() {
         return "Nome: " + getNome() + ", CPF: " + cpfHospede + ", País: " + paisHospede;
     }
 
-    public void adicionarReserva(Reserva reserva) {
-        reservas.add(reserva);
+    public long getCpfHospede() {
+        return cpfHospede;
     }
 
-    public void adicionarEstadia(Estadia estadia) {
-        estadias.add(estadia);
+    public void setCpfHospede(long cpfHospede) {
+        this.cpfHospede = cpfHospede;
     }
 
-    public List<Reserva> getReservas() {
-        return reservas;
+    public String getPaisHospede() {
+        return paisHospede;
     }
 
-    public List<Estadia> getEstadias() {
-        return estadias;
+    public void setPaisHospede(String paisHospede) {
+        this.paisHospede = paisHospede;
     }
 }
