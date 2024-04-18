@@ -1,0 +1,16 @@
+package ex6;
+
+public class Contato {
+	public String nome;
+	public long telefone;
+	public boolean favorito;
+	
+	public Contato(String nome, long telefone, boolean favorito) {
+		this.nome = nome;
+		this.telefone = telefone;
+		this.favorito = favorito;
+	}
+	
+	
+	
+}

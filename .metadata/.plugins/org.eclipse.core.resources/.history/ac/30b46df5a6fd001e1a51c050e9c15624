@@ -1,0 +1,31 @@
+package ex4;
+
+public class Banco {
+	private Cliente cliente;
+	private double saldo;
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public double getSaldo() {
+		return saldo;
+	}
+   
+	public void setSaldo(double saldo) {
+        if (saldo >= 0) {
+            this.saldo = saldo;
+        } else {
+            System.out.println("Erro: O saldo não pode ser negativo.");
+        }
+	
+    public void imprimir() {
+        if (cliente != null) {
+            cliente.imprimir();
+        }
+        System.out.println("Saldo: " + saldo);
+    }
+    
+}

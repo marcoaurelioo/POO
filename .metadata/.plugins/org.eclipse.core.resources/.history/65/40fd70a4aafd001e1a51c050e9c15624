@@ -1,0 +1,56 @@
+package ex7;
+
+public class Voo {
+    private Data dataOperacao;
+    private int quantidadeAssentos;
+    private boolean[] assentos;
+
+    // Construtor
+    public Voo(Data dataOperacao, int quantidadeAssentos) {
+        this.dataOperacao = dataOperacao;
+        this.quantidadeAssentos = quantidadeAssentos;
+        this.assentos = new boolean[quantidadeAssentos]; // Inicializa o vetor de assentos
+
+        // Inicializa cada assento como desocupado (false)
+        for (int i = 0; i < quantidadeAssentos; i++) {
+            assentos[i] = false;
+        }
+    }
+
+    // Método para verificar se um assento está ocupado ou não
+    public boolean verifica(int numeroAssento) {
+        if (numeroAssento < 1 || numeroAssento > quantidadeAssentos) {
+            return false; // Retorna falso se o número de assento for inválido
+        }
+        return assentos[numeroAssento - 1];
+    }
+
+    // Método para ocupar um assento
+    public void ocupa(int numeroAssento) {
+        if (numeroAssento >= 1 && numeroAssento <= quantidadeAssentos) {
+            assentos[numeroAssento - 1] = true;
+        }
+    }
+
+    // Método para verificar o número de cadeiras vagas disponíveis no voo
+    public int vagas() {
+        int vagas = 0;
+        for (boolean assento : assentos) {
+            if (!assento) {
+                vagas++;
+            }
+        }
+        return vagas;
+    }
+
+    // Método para imprimir a data do voo e as cadeiras ainda disponíveis
+    public void imprimir() {
+        System.out.println("Data do voo: " + dataOperacao);
+        System.out.println("Cadeiras disponíveis:");
+        for (int i = 0; i < quantidadeAssentos; i++) {
+            if (!assentos[i]) {
+                System.out.println("Assento " + (i + 1));
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+package ex7;
+import java.util.Date;
+
+public class Voo {
+    private Date dataOperacao;
+    private int quantidadeAssentos;
+    private boolean[] assentos;
+
+    
+    public Voo(Date dataOperacao, int quantidadeAssentos) {
+        this.dataOperacao = dataOperacao;
+        this.quantidadeAssentos = quantidadeAssentos;
+        this.assentos = new boolean[quantidadeAssentos];
+
+        
+        for (int i = 0; i < quantidadeAssentos; i++) {
+            assentos[i] = false;
+        }
+    }
+
+   
+    public boolean verifica(int numeroAssento) {
+        if (numeroAssento < 1 || numeroAssento > quantidadeAssentos) {
+            return false; 
+        }
+        return assentos[numeroAssento - 1];
+    }
+
+    
+    public void ocupa(int numeroAssento) {
+        if (numeroAssento >= 1 && numeroAssento <= quantidadeAssentos) {
+            assentos[numeroAssento - 1] = true;
+        }
+    }
+
+   
+    public int vagas() {
+        int vagas = 0;
+        for (boolean assento : assentos) {
+            if (!assento) {
+                vagas++;
+            }
+        }
+        return vagas;
+    }
+
+   
+    public void imprimir() {
+        System.out.println("Data do voo: " + dataOperacao);
+        System.out.println("Cadeiras disponíveis:");
+        for (int i = 0; i < quantidadeAssentos; i++) {
+            if (!assentos[i]) {
+                System.out.println("Assento " + (i + 1));
+            }
+        }
+    }
+}
