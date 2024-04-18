@@ -22,7 +22,6 @@ public class Estadia {
         this.consumos = new ArrayList<>();
     }
 
-    // Métodos para adicionar, remover ou obter serviços e consumos
     public void adicionarServico(Servico servico) {
         servicos.add(servico);
     }
