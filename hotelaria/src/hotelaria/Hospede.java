@@ -1,6 +1,4 @@
 package hotelaria;
-
-
 public class Hospede extends Pessoa{
 	
     private long cpfHospede;
