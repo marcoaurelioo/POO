@@ -3,12 +3,10 @@ package hotelaria;
 public class Item {
     private String tipoItem;
     private double valorItem;
-    private int quantidadeItem;
 
-    public Item(String tipoItem, double valorItem, int quantidadeItem) {
+    public Item(String tipoItem, double valorItem) {
         this.tipoItem = tipoItem;
         this.valorItem = valorItem;
-        this.quantidadeItem = quantidadeItem;
     }
 
 	public String getTipoItem() {
@@ -27,13 +25,5 @@ public class Item {
 		this.valorItem = valorItem;
 	}
 
-	public int getQuantidadeItem() {
-		return quantidadeItem;
-	}
-
-	public void setQuantidadeItem(int quantidadeItem) {
-		this.quantidadeItem = quantidadeItem;
-	}
-    
     
 }
