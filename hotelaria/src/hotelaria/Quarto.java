@@ -7,23 +7,13 @@ public class Quarto {
     private int numero;
     private int situacaoQuarto;
     private List<Estadia> estadias;
-    private List<Item> itens;
 
     public Quarto(Categoria categoria, int numero, int situacaoQuarto) {
         this.categoria = categoria;
         this.numero = numero;
         this.situacaoQuarto = situacaoQuarto;
         this.estadias = new ArrayList<>();
-        this.itens = new ArrayList<>();
     }
-
-    public List<Item> getItens() {
-		return itens;
-	}
-
-	public void setItens(List<Item> itens) {
-		this.itens = itens;
-	}
 
 	public void adicionarEstadia(Estadia estadia) {
         estadias.add(estadia);
@@ -65,6 +55,7 @@ public class Quarto {
 		this.estadias = estadias;
 	}
 
+	
     
 }
 

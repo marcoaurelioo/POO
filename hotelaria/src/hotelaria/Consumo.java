@@ -6,12 +6,26 @@ public class Consumo {
     private Item item;
     private int quantidade;
     private Date dataConsumo;
+    private Estadia estadia;
 
-    public Consumo(Item item, int quantidade, Date dataConsumo) {
+    public Consumo(Item item, int quantidade, Date dataConsumo, Estadia estadia) {
         this.item = item;
         this.quantidade = quantidade;
         this.dataConsumo = dataConsumo;
+        this.estadia = estadia;
     }
+
+    public double calcularTotal() {
+        return item.getValorItem() * quantidade;
+    }
+    
+	public Estadia getEstadia() {
+		return estadia;
+	}
+
+	public void setEstadia(Estadia estadia) {
+		this.estadia = estadia;
+	}
 
 	public Item getItem() {
 		return item;

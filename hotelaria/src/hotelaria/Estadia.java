@@ -11,6 +11,7 @@ public class Estadia {
     private Funcionario funcionarioResponsavel;
     private List<Servico> servicos;
     private List<Consumo> consumos;
+    private List<Diaria> diarias;
 
     public Estadia(Date dataCheckin, Date dataCheckout, Hospede hospede, Quarto quarto, Funcionario funcionarioResponsavel) {
         this.dataCheckin = dataCheckin;
@@ -20,14 +21,19 @@ public class Estadia {
         this.funcionarioResponsavel = funcionarioResponsavel;
         this.servicos = new ArrayList<>();
         this.consumos = new ArrayList<>();
+        this.diarias = new ArrayList<>();
     }
-
+  
     public void adicionarServico(Servico servico) {
         servicos.add(servico);
     }
 
     public void adicionarConsumo(Consumo consumo) {
         consumos.add(consumo);
+    }
+    
+    public void adicionarDiaria(Diaria diaria) {
+        diarias.add(diaria);
     }
 
     public List<Servico> getServicos() {
@@ -36,6 +42,10 @@ public class Estadia {
 
     public List<Consumo> getConsumos() {
         return consumos;
+    }
+    
+    public List<Diaria> getDiarias() {
+        return diarias;
     }
 
 	public Date getDataCheckin() {
@@ -86,5 +96,8 @@ public class Estadia {
 		this.consumos = consumos;
 	}
     
+    public void setDiaria(List<Diaria> diarias) {
+        this.diarias = diarias;
+    }
     
 }
