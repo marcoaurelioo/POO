@@ -23,6 +23,28 @@ public class Estadia {
         this.consumos = new ArrayList<>();
         this.diarias = new ArrayList<>();
     }
+    
+    public double calcularTotal() {
+    	double totalConsumosFrigobar = 0.0;
+        double totalDiarias = 0.0;
+        double totalServicos = 0.0;
+
+        for (Consumo consumo : consumos) {
+            if (consumo.getItem() instanceof ItemFrigobar) {
+                totalConsumosFrigobar += ((ItemFrigobar) consumo.getItem()).getPreco() * consumo.getQuantidade();
+            }
+        }
+        
+        for (Diaria diaria : diarias) {
+            totalDiarias += diaria.consultarDiaria();
+        }
+
+        for (Servico servico : servicos) {
+            totalServicos += servico.getValorServico();
+        }
+
+        return totalConsumosFrigobar + totalDiarias + totalServicos;
+    }
   
     public void adicionarServico(Servico servico) {
         servicos.add(servico);

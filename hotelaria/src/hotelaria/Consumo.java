@@ -3,20 +3,16 @@ import java.util.Date;
 
 
 public class Consumo {
-    private Item item;
+	private ItemFrigobar itemFrigobar;
     private int quantidade;
     private Date dataConsumo;
     private Estadia estadia;
 
-    public Consumo(Item item, int quantidade, Date dataConsumo, Estadia estadia) {
-        this.item = item;
+    public Consumo(ItemFrigobar itemFrigobar, int quantidade, Date dataConsumo, Estadia estadia) {
+        this.itemFrigobar = itemFrigobar;
         this.quantidade = quantidade;
         this.dataConsumo = dataConsumo;
         this.estadia = estadia;
-    }
-
-    public double calcularTotal() {
-        return item.getValorItem() * quantidade;
     }
     
 	public Estadia getEstadia() {
@@ -27,12 +23,12 @@ public class Consumo {
 		this.estadia = estadia;
 	}
 
-	public Item getItem() {
-		return item;
+	public ItemFrigobar getItem() {
+		return itemFrigobar;
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setItem(ItemFrigobar itemFrigobar) {
+		this.itemFrigobar = itemFrigobar;
 	}
 
 	public int getQuantidade() {
