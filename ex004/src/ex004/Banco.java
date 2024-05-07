@@ -36,14 +36,16 @@ public class Banco {
         if (operacao.getTipo() == 'D') { 
             this.saldo += operacao.getValor();
             System.out.println("Depósito de " + operacao.getValor() + " realizado.");
-        } else if (operacao.getTipo() == 'R') {
+        } 
+        else if (operacao.getTipo() == 'R') {
             if (operacao.getValor() <= this.saldo) {
                 this.saldo -= operacao.getValor();
                 System.out.println("Retirada de " + operacao.getValor() + " realizada.");
             } else {
                 System.out.println("Erro: Saldo insuficiente para a retirada.");
             }
-        } else {
+        } 
+        else {
             System.out.println("Erro: Tipo de operação inválido.");
         }
     }
