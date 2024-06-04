@@ -21,17 +21,22 @@ public class HospedeDataDAO implements HospedeDAO{
 		return true;
 	}
 	
-	public boolean consultar(Hospede Hospede) {
-		try {
+	public boolean consultar(Hospede hospede) {
+	    try (FileReader fileReader = new FileReader("Hospede.txt");
+	         BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+	        String line;
+	        while ((line = bufferedReader.readLine()) != null) {
+	            String[] data = line.split(","); 
 
-			}
-
-		}
-		catch (IOException e) {
-			
-		}
-		return true;
+	            if (data.length >= 1 && data[0].trim().equals(hospede.getCpf())) { 
+	                if (data.length >= 2 && data[1].trim().equals(hospede.getNome())) { 
+	                    return true; 
+	                }
+	            }
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    return false; 
 	}
-
-}
 }
