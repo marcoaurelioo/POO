@@ -12,7 +12,7 @@ public class HospedeDataDAO implements HospedeDAO{
 			fileWriter = new FileWriter("Hospede.txt", true);
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			
-			bufferedWriter.write(hospede.getCpf() + ", " + hospede.getNome() + ", " + hospede.getEmail());
+			bufferedWriter.write(hospede.getCpf() + ", " + hospede.getNome() + ", " + hospede.getEmail() + ", " + hospede.getEnderecoCompleto());
 			bufferedWriter.newLine();
 			bufferedWriter.close();	
 		} catch(IOException e) {
