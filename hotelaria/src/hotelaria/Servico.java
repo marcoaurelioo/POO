@@ -1,29 +1,37 @@
 package hotelaria;
 
 public class Servico {
-    private String tipoServico;
-    private double valorServico;
-
-    public Servico(String tipoServico, double valorServico) {
-        this.tipoServico = tipoServico;
-        this.valorServico = valorServico;
-    }
-
-	public String getTipoServico() {
-		return tipoServico;
+    private int codigo;
+    private String descricao;
+    private double valor;
+    
+	public Servico(int codigo, String descricao, double valor) {
+		super();
+		this.codigo = codigo;
+		this.descricao = descricao;
+		this.valor = valor;
+	}
+	
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 
-	public void setTipoServico(String tipoServico) {
-		this.tipoServico = tipoServico;
-	}
 
-	public double getValorServico() {
-		return valorServico;
-	}
-
-	public void setValorServico(double valorServico) {
-		this.valorServico = valorServico;
-	}
     
     
 }

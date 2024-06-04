@@ -1,20 +1,22 @@
 package hotelaria;
 
 class Funcionario extends Pessoa {
-    private String cargoFuncionario;
+    private String setor;
 
-    public Funcionario(String nome, String email, String cargoFuncionario) {
-        super(nome, email);
-        this.cargoFuncionario = cargoFuncionario;
-    }
-
-	public String getCargoFuncionario() {
-		return cargoFuncionario;
+	public Funcionario(String nome, String email, String cpf, String setor) {
+		super(nome, email, cpf);
+		this.setor = setor;
 	}
 
-	public void setCargoFuncionario(String cargoFuncionario) {
-		this.cargoFuncionario = cargoFuncionario;
+	public String getSetor() {
+		return setor;
 	}
+
+	public void setSetor(String setor) {
+		this.setor = setor;
+	}
+
+
 
    
 }

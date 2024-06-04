@@ -3,40 +3,41 @@ import java.util.Date;
 
 
 public class Consumo {
-	private ItemFrigobar itemFrigobar;
-    private int quantidade;
+	private Item item;
+    private Reserva reserva;
+    private int quantidadeSolicitada;
     private Date dataConsumo;
-    private Estadia estadia;
-
-    public Consumo(ItemFrigobar itemFrigobar, int quantidade, Date dataConsumo, Estadia estadia) {
-        this.itemFrigobar = itemFrigobar;
-        this.quantidade = quantidade;
-        this.dataConsumo = dataConsumo;
-        this.estadia = estadia;
-    }
     
-	public Estadia getEstadia() {
-		return estadia;
+	public Consumo(Item item, Reserva reserva, int quantidadeSolicitada, Date dataConsumo) {
+		super();
+		this.item = item;
+		this.reserva = reserva;
+		this.quantidadeSolicitada = quantidadeSolicitada;
+		this.dataConsumo = dataConsumo;
 	}
 
-	public void setEstadia(Estadia estadia) {
-		this.estadia = estadia;
+	public Item getItem() {
+		return item;
 	}
 
-	public ItemFrigobar getItem() {
-		return itemFrigobar;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
-	public void setItem(ItemFrigobar itemFrigobar) {
-		this.itemFrigobar = itemFrigobar;
+	public Reserva getReserva() {
+		return reserva;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
 	}
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public int getQuantidadeSolicitada() {
+		return quantidadeSolicitada;
+	}
+
+	public void setQuantidadeSolicitada(int quantidadeSolicitada) {
+		this.quantidadeSolicitada = quantidadeSolicitada;
 	}
 
 	public Date getDataConsumo() {
@@ -46,6 +47,8 @@ public class Consumo {
 	public void setDataConsumo(Date dataConsumo) {
 		this.dataConsumo = dataConsumo;
 	}
+
+
     
     
 }

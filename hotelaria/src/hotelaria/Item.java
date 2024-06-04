@@ -1,29 +1,37 @@
 package hotelaria;
 
 public class Item {
-    private String tipoItem;
-    private double valorItem;
-
-    public Item(String tipoItem, double valorItem) {
-        this.tipoItem = tipoItem;
-        this.valorItem = valorItem;
-    }
-
-	public String getTipoItem() {
-		return tipoItem;
+    private int codigo;
+    private String descricao;
+    private double valor;
+	
+    public Item(int codigo, String descricao, double valor) {
+		super();
+		this.codigo = codigo;
+		this.descricao = descricao;
+		this.valor = valor;
 	}
-
-	public void setTipoItem(String tipoItem) {
-		this.tipoItem = tipoItem;
+    
+	public int getCodigo() {
+		return codigo;
 	}
-
-	public double getValorItem() {
-		return valorItem;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-
-	public void setValorItem(double valorItem) {
-		this.valorItem = valorItem;
+	public String getDescricao() {
+		return descricao;
 	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+    
+
 
     
 }

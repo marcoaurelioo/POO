@@ -1,32 +1,20 @@
 package hotelaria;
 public class Hospede extends Pessoa{
 	
-    private long cpfHospede;
-    private String paisHospede;
+    private String enderecoCompleto;
 
-    public Hospede(String nome, String email, long cpfHospede, String paisHospede) {
-        super(nome, email);
-        this.cpfHospede = cpfHospede;
-        this.paisHospede = paisHospede;
-    }
+    public Hospede(String nome, String email, String cpf, String enderecoCompleto) {
+		super(nome, email, cpf);
+		this.enderecoCompleto = enderecoCompleto;
+	}
 
-    public String consultarDados() {
-        return "Nome: " + getNome() + ", CPF: " + cpfHospede + ", País: " + paisHospede;
-    }
+	public String getEnderecoCompleto() {
+		return enderecoCompleto;
+	}
 
-    public long getCpfHospede() {
-        return cpfHospede;
-    }
-
-    public void setCpfHospede(long cpfHospede) {
-        this.cpfHospede = cpfHospede;
-    }
-
-    public String getPaisHospede() {
-        return paisHospede;
-    }
-
-    public void setPaisHospede(String paisHospede) {
-        this.paisHospede = paisHospede;
-    }
+	public void setEnderecoCompleto(String enderecoCompleto) {
+		this.enderecoCompleto = enderecoCompleto;
+	}
+    
+    
 }
