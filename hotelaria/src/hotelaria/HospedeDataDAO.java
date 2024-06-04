@@ -1,9 +1,11 @@
 package hotelaria;
+import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.File;
 
 public class HospedeDataDAO implements HospedeDAO{
 	public boolean cadastrar(Hospede hospede) {
@@ -40,59 +42,65 @@ public class HospedeDataDAO implements HospedeDAO{
 	    return false; 
 	}
 
-	//TESTE
+	
 	public boolean editar(Hospede hospede) {
-        String tempFile = "temp.txt";
-        String filePath = "Hospede.txt";
-        boolean houveEdicao = false;
+	    // Verifica se o hóspede existe antes de editar suas informações
+	    if (!consultar(hospede)) {
+	        System.out.println("Hóspede não encontrado.");
+	        return false;
+	    }
 
-        try (FileReader fileReader = new FileReader(filePath);
-             BufferedReader bufferedReader = new BufferedReader(fileReader);
-             FileWriter fileWriter = new FileWriter(tempFile, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-             Scanner scanner = new Scanner(System.in)) {
+	    // Arquivo temporário
+	    String tempFile = "temp.txt";
+	    String filePath = "Hospede.txt";
+	    boolean houveEdicao = false;
 
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(",");
+	    try (FileReader fileReader = new FileReader(filePath);
+	         BufferedReader bufferedReader = new BufferedReader(fileReader);
+	         FileWriter fileWriter = new FileWriter(tempFile);
+	         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+	         Scanner scanner = new Scanner(System.in)) {
 
-                if (data.length >= 1 && data[0].trim().equals(hospede.getCpf())) { // Encontrou o CPF
-                    if (data.length >= 2 && data[1].trim().equals(hospede.getNome())) { // Encontrou o nome
-                        System.out.println("Novo nome:");
-                        String novoNome = scanner.nextLine().trim();
-                        System.out.println("Novo email:");
-                        String novoEmail = scanner.nextLine().trim();
-                        System.out.println("Novo endereço:");
-                        String novoEndereco = scanner.nextLine().trim();
+	        String line;
+	        while ((line = bufferedReader.readLine()) != null) {
+	            String[] data = line.split(",");
 
-                        // Edita as informações
-                        bufferedWriter.write(hospede.getCpf() + ", " + novoNome + ", " + novoEmail + ", " + novoEndereco);
-                        bufferedWriter.newLine();
-                        houveEdicao = true;
-                    } else {
-                        // Mantém a linha original no arquivo temporário
-                        bufferedWriter.write(line);
-                        bufferedWriter.newLine();
-                    }
-                } else {
-                    // Mantém a linha original no arquivo temporário
-                    bufferedWriter.write(line);
-                    bufferedWriter.newLine();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+	            // Verifica se os dados do hóspede no arquivo correspondem aos dados do hóspede que está sendo editado
+	            if (data.length >= 1 && data[0].trim().equals(hospede.getCpf()) && 
+	                data.length >= 2 && data[1].trim().equals(hospede.getNome())) { 
+	                
+	                System.out.println("Novo CPF:");
+	                String novoCPF = scanner.nextLine().trim();
+	                System.out.println("Novo nome:");
+	                String novoNome = scanner.nextLine().trim();
+	                System.out.println("Novo email:");
+	                String novoEmail = scanner.nextLine().trim();
+	                System.out.println("Novo endereço:");
+	                String novoEndereco = scanner.nextLine().trim();
 
-        // Substitui o arquivo original pelo temporário
-        File originalFile = new File(filePath);
-        File temp = new File(tempFile);
-        if (temp.renameTo(originalFile)) {
-            System.out.println("Edição concluída com sucesso.");
-        } else {
-            System.out.println("Falha ao editar o hóspede.");
-        }
+	                // Edita as informações
+	                bufferedWriter.write(novoCPF + ", " + novoNome + ", " + novoEmail + ", " + novoEndereco);
+	                bufferedWriter.newLine();
+	                houveEdicao = true;
+	            } else {
+	                // Mantém a linha original no arquivo temporário
+	                bufferedWriter.write(line);
+	                bufferedWriter.newLine();
+	            }
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 
-        return houveEdicao;
-    }
+	    // Substitui o arquivo original pelo temporário
+	    File originalFile = new File(filePath);
+	    File temp = new File(tempFile);
+	    if (originalFile.delete() && temp.renameTo(originalFile)) {
+	        System.out.println("Edição concluída com sucesso.");
+	    } else {
+	        System.out.println("Falha ao editar o hóspede.");
+	    }
+
+	    return houveEdicao;
+	}
 }
