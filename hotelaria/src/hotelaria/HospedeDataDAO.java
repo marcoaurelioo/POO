@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.File;
+import java.util.ArrayList;
 
 public class HospedeDataDAO implements HospedeDAO{
 	public boolean cadastrar(Hospede hospede) {
