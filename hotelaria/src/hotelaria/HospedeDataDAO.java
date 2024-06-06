@@ -103,4 +103,33 @@ public class HospedeDataDAO implements HospedeDAO{
 
 	    return houveEdicao;
 	}
+
+	//TESTE
+	    public ArrayList<Hospede> listar() {
+        ArrayList<Hospede> hospedes = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader("Hospede.txt");
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                // Verifica se a linha possui dados suficientes para criar um objeto Hospede
+                if (data.length >= 4) {
+                    String cpf = data[0].trim();
+                    String nome = data[1].trim();
+                    String email = data[2].trim();
+                    String endereco = data[3].trim();
+
+                    Hospede hospede = new Hospede(cpf, nome, email, endereco);
+                    hospedes.add(hospede);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return hospedes;
+    }
+}
 }
