@@ -12,7 +12,7 @@ import Dao.dao;
 import hotelaria.Servico;
 
 public class ServicoDataDao implements dao<Servico>{
-    private static final String CAMINHO = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\Servico.txt";
+    private static final String CAMINHO = "db\\Servico.txt";
     
     public class DaoException extends Exception {
         public DaoException(String message) {
