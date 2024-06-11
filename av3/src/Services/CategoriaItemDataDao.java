@@ -14,7 +14,7 @@ import hotelaria.Categoria;
 import hotelaria.Item;
 
 public class CategoriaItemDataDao implements dao<CategoriaItem>{
-    private static final String CAMINHO = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\CategoriaItem.txt";
+    private static final String CAMINHO = "db\\CategoriaItem.txt";
     
     public class DaoException extends Exception {
         public DaoException(String message) {
