@@ -28,7 +28,7 @@ public class HospedeDataDao implements dao<Hospede>{
                 file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
-                throw new DaoException("Erro ao criar ou verificar arquivo.");
+                throw new DaoException("Erro ao criar ou verificar arquivo."); //  lida com erros relacionados a operações de acesso a dados, como ler ou gravar arquivos.
             }
         }
     }
