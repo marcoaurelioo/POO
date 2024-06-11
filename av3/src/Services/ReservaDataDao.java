@@ -20,7 +20,7 @@ import hotelaria.Funcionario;
 
 
 public class ReservaDataDao implements dao<Reserva>{
-    private static final String CAMINHO = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\Reserva.txt";
+    private static final String CAMINHO = "db\\Reserva.txt";
     
     public class DaoException extends Exception {
         public DaoException(String message) {
