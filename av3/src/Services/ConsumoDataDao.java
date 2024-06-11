@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 
 
 public class ConsumoDataDao implements dao<Consumo>{
-    private static final String CAMINHO = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\Consumo.txt";
+    private static final String CAMINHO = "db\\Consumo.txt";
     
     public class DaoException extends Exception {
         public DaoException(String message) {
