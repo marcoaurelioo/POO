@@ -13,7 +13,6 @@ import java.util.Scanner;
 
 import Dao.dao;
 import hotelaria.ConsumoServico;
-import hotelaria.Hospede;
 import hotelaria.Reserva;
 import hotelaria.Servico;
 
