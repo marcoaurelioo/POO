@@ -22,7 +22,7 @@ public class Funcionario extends Pessoa {
                 "nome='" + getNome() + '\'' +
                 ", email='" + getEmail() + '\'' +
                 ", cpf='" + getCpf() + '\'' +
-                ", setor='" + setor + '\'' +
+                ", setor='" + getSetor() + '\'' +
                 '}';
     }
 

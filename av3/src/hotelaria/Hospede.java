@@ -22,7 +22,7 @@ public class Hospede extends Pessoa{
                 "nome='" + getNome() + '\'' +
                 ", email='" + getEmail() + '\'' +
                 ", cpf='" + getCpf() + '\'' +
-                ", enderecoCompleto='" + enderecoCompleto + '\'' +
+                ", enderecoCompleto='" + getEnderecoCompleto() + '\'' +
                 '}';
     }
 }
