@@ -1,27 +1,8 @@
 import java.util.Date;
 import java.util.Scanner;
 
-
-import Model.Categoria;
-import Model.CategoriaItem;
-import Model.Consumo;
-import Model.ConsumoServico;
-import Model.Funcionario;
-import Model.Hospede;
-import Model.Item;
-import Model.Quarto;
-import Model.Reserva;
-import Model.Servico;
-import Services.CategoriaDataDao;
-import Services.CategoriaItemDataDao;
-import Services.ConsumoDataDao;
-import Services.ConsumoServicoDataDao;
-import Services.FuncionarioDataDao;
-import Services.HospedeDataDao;
-import Services.ItemDataDao;
-import Services.QuartaDataDao;
-import Services.ReservaDataDao;
-import Services.ServicoDataDao;
+import hotelaria.*;
+import Services.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
