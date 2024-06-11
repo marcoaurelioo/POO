@@ -1,4 +1,6 @@
-package dao;
+package DAO;
+import java.util.ArrayList;
+
 public interface dao<T> {
   public boolean cadastrar(T object);
   public T consultar(T object);

@@ -1,4 +1,5 @@
 	package hotelaria;
+import Services.HospedeDataDao;
 	
 	public class Main {
 	

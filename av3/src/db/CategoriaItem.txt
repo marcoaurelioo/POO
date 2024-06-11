@@ -1,0 +1,2 @@
+TV, Luxo, 10
+Geladeira, Econômico, 5

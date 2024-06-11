@@ -16,7 +16,15 @@ public class Funcionario extends Pessoa {
 		this.setor = setor;
 	}
 
-
+    @Override
+    public String toString() {
+        return "Funcionário{" +
+                "nome='" + getNome() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", cpf='" + getCpf() + '\'' +
+                ", setor='" + setor + '\'' +
+                '}';
+    }
 
    
 }
