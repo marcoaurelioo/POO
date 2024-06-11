@@ -7,57 +7,39 @@ import Services.*;
 public class App {
     public static void main(String[] args) throws Exception {
 
-    Categoria categoria = new Categoria("1", "luxo", 50);
-    Quarto quarto = new Quarto("5", categoria, "Ativo");
-    // Quarto quarto2 = new Quarto("3", categoria, "Ativo");
-    QuartaDataDao q1 = new QuartaDataDao();
-    
-    // q1.editar(quarto);
-    // q1.cadastrar(quarto2);
-    // q1.cadastrar(quarto);
 
-    Hospede hospede1 = new Hospede("1234", "Luan", "paulo@", "Fortal");
-    HospedeDataDao hospedeDao = new HospedeDataDao();
-    // hospedeDao.cadastrar(hospede1);
-    // hospedeDao.consultar(hospede1);
-    // hospedeDao.editar(hospede1);
+        Categoria categoria = new Categoria("2", "standard", 80);
+        Quarto quarto = new Quarto("3", categoria, "Inativo");
+        Quarto quarto2 = new Quarto("5", categoria, "Ativo");
+        QuartaDataDao q1 = new QuartaDataDao();
 
-    Funcionario funcionario1 = new Funcionario("2222222", "Buda", "luan@", "Recepção");
-    FuncionarioDataDao funcionarioDao = new FuncionarioDataDao();
-    // funcionarioDao.cadastrar(funcionario1);
-    // funcionarioDao.consultar(funcionario1);
-    // funcionarioDao.editar(funcionario1);
+        Hospede hospede1 = new Hospede("9876", "Carlos", "carlos@example.com", "São Paulo");
+        HospedeDataDao hospedeDao = new HospedeDataDao();
 
-    Categoria categoria1 = new Categoria("1", "simples", 80);
-    Categoria categoria2 = new Categoria("2", "simples", 80);
-    CategoriaDataDao categoriaDao = new CategoriaDataDao();
-    // categoriaDao.cadastrar(categoria1);
-    // categoriaDao.cadastrar(categoria2);
-    // categoriaDao.consultar(categoria1);
+        Funcionario funcionario1 = new Funcionario("3333333", "Joana", "joana@example.com", "Administração");
+        FuncionarioDataDao funcionarioDao = new FuncionarioDataDao();
 
-    Item item1 = new Item(1, "Coca", 2);
-    ItemDataDao itemDao = new ItemDataDao();
-    // itemDao.cadastrar(item1);
-    // itemDao.consultar(item1);
+        Categoria categoria1 = new Categoria("1", "luxo", 100);
+        Categoria categoria2 = new Categoria("2", "standard", 80);
+        CategoriaDataDao categoriaDao = new CategoriaDataDao();
 
-    Servico servico1 = new Servico(1, "massagem", 100);
-    ServicoDataDao servicoDao = new ServicoDataDao();
-    // servicoDao.cadastrar(servico1);
+        Item item1 = new Item(2, "Pepsi", 3);
+        ItemDataDao itemDao = new ItemDataDao();
 
-    Reserva reserva1 = new Reserva(1, hospede1, quarto, 110);
-    ReservaDataDao reservaDao = new ReservaDataDao();
-    // reservaDao.cadastrar(reserva1);
+        Servico servico1 = new Servico(2, "sauna", 150);
+        ServicoDataDao servicoDao = new ServicoDataDao();
 
-    Consumo consumo = new Consumo(item1, reserva1, 2, new Date());
-    ConsumoDataDao consumoDao = new ConsumoDataDao();
-    // consumoDao.cadastrar(consumo);
-    // consumoDao.consultar(consumo);
+        Reserva reserva1 = new Reserva(2, hospede1, quarto2, 120);
+        ReservaDataDao reservaDao = new ReservaDataDao();
 
-    CategoriaItem categoriaItem1 = new CategoriaItem(item1, categoria2, 3);
-    CategoriaItemDataDao categoriaItemDao = new CategoriaItemDataDao();
+        Consumo consumo = new Consumo(item1, reserva1, 3, new Date());
+        ConsumoDataDao consumoDao = new ConsumoDataDao();
 
-    ConsumoServico consumoServico1 = new ConsumoServico(servico1, reserva1, 2, new Date());
-    ConsumoServicoDataDao consumoServicoDao = new ConsumoServicoDataDao();
+        CategoriaItem categoriaItem1 = new CategoriaItem(item1, categoria2, 5);
+        CategoriaItemDataDao categoriaItemDao = new CategoriaItemDataDao();
+
+        ConsumoServico consumoServico1 = new ConsumoServico(servico1, reserva1, 3, new Date());
+        ConsumoServicoDataDao consumoServicoDao = new ConsumoServicoDataDao();
     
     Scanner scanner = new Scanner(System.in);
         int opcao;
