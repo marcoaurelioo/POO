@@ -13,6 +13,12 @@ import hotelaria.Hospede;
 
 public class HospedeDataDao implements dao<Hospede>{
     private static final String CAMINHO = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\Hospede.txt";
+
+    public class DaoException extends Exception {
+        public DaoException(String message) {
+            super(message);
+        }
+    }
     
     private void verificarOuCriarArquivo() {
         File file = new File(CAMINHO);
