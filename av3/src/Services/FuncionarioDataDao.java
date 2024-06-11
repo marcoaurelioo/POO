@@ -27,28 +27,28 @@ public class FuncionarioDataDao implements dao<Funcionario>{
     }
     
     public boolean cadastrar(Funcionario funcionario) {
-    	verificarOuCriarArquivo();
+        verificarOuCriarArquivo();
         if (consultar(funcionario) != null) {
             System.out.println("Funcionário já cadastrado.");
             return false;
         } 
-        else {
-        	System.out.println("Funcionário cadastrado com sucesso!");
-        }
-        
+
         FileWriter fileWriter;
         try {
             fileWriter = new FileWriter(CAMINHO, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             
-            bufferedWriter.write(funcionario.getCpf() + ", " + funcionario.getNome() + ", " + funcionario.getEmail() + ", " + funcionario.getSetor());
+            bufferedWriter.write(funcionario.getNome() + ", " + funcionario.getEmail() + ", " + funcionario.getCpf() + ", " + funcionario.getSetor());
             bufferedWriter.newLine();
             bufferedWriter.close();    
+            System.out.println("Funcionário cadastrado com sucesso!");
+            return true; 
         } catch(IOException e) {
             e.printStackTrace();
         }
-        return true;
+        return false; 
     }
+
     
     public Funcionario consultar(Funcionario funcionario) {
         try (FileReader fileReader = new FileReader(CAMINHO);
@@ -57,8 +57,8 @@ public class FuncionarioDataDao implements dao<Funcionario>{
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(", ");
 
-                if (data.length >= 4 && data[0].trim().equals(funcionario.getCpf()) && 
-                    data.length >= 5 && data[1].trim().equals(funcionario.getNome())) { 
+                // Verifica se o CPF do funcionário consultado está presente na linha
+                if (data.length >= 3 && data[2].trim().equals(funcionario.getCpf())) { 
                     return new Funcionario(data[0].trim(), data[1].trim(), data[2].trim(), data[3].trim());
                 }
             }
@@ -67,6 +67,8 @@ public class FuncionarioDataDao implements dao<Funcionario>{
         }
         return null;
     }
+
+
 
 
 
@@ -131,29 +133,35 @@ public class FuncionarioDataDao implements dao<Funcionario>{
         return houveEdicao;
     }
     
-public ArrayList<Funcionario> listar(Funcionario funcionario) {
-    ArrayList<Funcionario> funcionarios = new ArrayList<>();
+    public ArrayList<Funcionario> listar(Funcionario funcionario) {
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
-    try (FileReader fileReader = new FileReader(CAMINHO);
-         BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try (FileReader fileReader = new FileReader(CAMINHO);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            String[] data = line.split(", ");
+            String line;
+            int contador = 1;
+            System.out.println("Lista de Funcionarios:");
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(", ");
 
-            String cpf = data[0].trim();
-            String nome = data[1].trim();
-            String email = data[2].trim();
-            String setor = data[3].trim();
+                String nome = data[0].trim();
+                String email = data[1].trim();
+                String cpf = data[2].trim();
+                String setor = data[3].trim();
 
-            Funcionario novoFuncionario = new Funcionario(cpf, nome, email, setor);
-            funcionarios.add(novoFuncionario);
+                Funcionario novoFuncionario = new Funcionario(nome, email, cpf, setor);
+                funcionarios.add(novoFuncionario);
+
+                // Exibir cada funcionário com numeração
+                System.out.println(contador + " - Nome: " + novoFuncionario.getNome() + ", Email: " + novoFuncionario.getEmail() + ", CPF: " + novoFuncionario.getCpf() + ", Setor: " + novoFuncionario.getSetor() + "\n");
+                contador++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 
-    return funcionarios;
-}
+        return funcionarios;
+    }
 
 }

@@ -17,16 +17,13 @@ public class Main {
         FuncionarioDataDao dao = new FuncionarioDataDao();
 
         // Cadastro de funcionários
-        Funcionario funcionario1 = new Funcionario("11111111111", "João", "joao@example.com", "Limpeza");
-        Funcionario funcionario2 = new Funcionario("22222222222", "Maria", "maria@example.com", "Recepção");
+        Funcionario funcionario1 = new Funcionario("Maria", "joao@example.com", "11111111111", "Limpeza");
 
         dao.cadastrar(funcionario1);
-        dao.cadastrar(funcionario2);
+        
         
         dao.listar(funcionario1);
 
     }
 
-    
-   
 }

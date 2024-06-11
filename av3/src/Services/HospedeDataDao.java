@@ -47,23 +47,33 @@ public class HospedeDataDao implements dao<Hospede>{
         return true;
     }
     
-    public Hospede consultar(Hospede hospede) {
+    public Hospede consultar(Hospede hospedeConsulta) {
         try (FileReader fileReader = new FileReader(CAMINHO);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(",");
-
-                if (data.length >= 4 && data[0].trim().equals(hospede.getCpf()) && 
-                    data.length >= 5 && data[1].trim().equals(hospede.getNome())) { 
-                    return new Hospede(data[0].trim(), data[1].trim(), data[2].trim(), data[3].trim());
+            
+            String linha;
+            while ((linha = bufferedReader.readLine()) != null) {
+                String[] dadosHospede = linha.split(", ");
+                if (dadosHospede.length >= 4) {
+                    String cpf = dadosHospede[0].trim();
+                    String nome = dadosHospede[1].trim();
+                    String email = dadosHospede[2].trim();
+                    String endereco = dadosHospede[3].trim();
+                    
+                    if (hospedeConsulta.getCpf().equals(cpf) && 
+                        hospedeConsulta.getNome().equals(nome) && 
+                        hospedeConsulta.getEmail().equals(email) && 
+                        hospedeConsulta.getEnderecoCompleto().equals(endereco)) {
+                        return hospedeConsulta; 
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return null; // Hóspede não encontrado
     }
+
 
     public boolean editar(Hospede hospede) {
         if (consultar(hospede) != null) {
