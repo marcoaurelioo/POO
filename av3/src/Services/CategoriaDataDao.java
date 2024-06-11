@@ -14,6 +14,12 @@ import hotelaria.Categoria;
 public class CategoriaDataDao implements dao<Categoria>{
     private static final String CAMINHO = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\Categoria.txt";
     
+    public class DaoException extends Exception {
+        public DaoException(String message) {
+            super(message);
+        }
+    }
+    
     private void verificarOuCriarArquivo() {
         File file = new File(CAMINHO);
         if (!file.exists()) {
@@ -22,6 +28,7 @@ public class CategoriaDataDao implements dao<Categoria>{
                 file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
+                throw new DaoException("Erro ao criar ou verificar arquivo."); //  lida com erros relacionados a operações de acesso a dados, como ler ou gravar arquivos.
             }
         }
     }
