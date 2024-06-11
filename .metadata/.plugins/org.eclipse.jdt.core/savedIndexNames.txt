@@ -18,7 +18,6 @@ INDEX VERSION 1.134+C:\Users\Marco Aurélio\Desktop\POO\.metadata\.plugins\org.ec
 1343457238.index
 4132769782.index
 103652226.index
-792686967.index
 1590169572.index
 3624757343.index
 3875041948.index

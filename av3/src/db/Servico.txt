@@ -1,3 +1,0 @@
-1, Limpeza, 50.0
-2, Refeição, 100.0
-1, sexo, 2.0E8

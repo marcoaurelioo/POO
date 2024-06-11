@@ -1,4 +1,0 @@
-1, TV, 200.0
-2, Geladeira, 500.0
-1, Toalha, 10.0
-2, Sabonete, 5.0

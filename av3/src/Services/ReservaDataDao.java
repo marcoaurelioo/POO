@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
+
 import Dao.dao;
 import hotelaria.Reserva;
-import hotelaria.Servico;
+
 import hotelaria.Hospede;
-import hotelaria.Quarto;
+
 import hotelaria.Funcionario;
 
 
@@ -222,11 +222,11 @@ public class ReservaDataDao implements dao<Reserva>{
                 }
 
                 // Criar objeto Reserva com as informações lidas
-                Reserva novaReserva = new Reserva(codigo, null, null, null, new Funcionario(nomeFuncionarioReserva, null, null, null), null, null, null, null, valorReserva, 0.0);
+                Reserva novaReserva = new Reserva(codigo, new Hospede(nomeHospede, null, null, null), null, null, new Funcionario(nomeFuncionarioReserva, null, null, null), null, null, null, null, valorReserva, 0.0);
                 reservas.add(novaReserva);
 
                 // Exibir cada reserva com numeração
-                System.out.println(contador + " - Código: " + novaReserva.getCodigo() + ", Nome do Funcionário de Reserva: " + nomeFuncionarioReservaDisplay +
+                System.out.println(contador + " - Código: " + novaReserva.getCodigo() + ", Nome do Hóspede: " + novaReserva.getHospede().getNome() + ", Nome do Funcionário de Reserva: " + nomeFuncionarioReservaDisplay +
                         ", Valor da Reserva: " + novaReserva.getValorReserva() + "\n");
 
                 contador++;
@@ -236,6 +236,6 @@ public class ReservaDataDao implements dao<Reserva>{
         }
 
         return reservas;
-    } 
+    }
 
 }

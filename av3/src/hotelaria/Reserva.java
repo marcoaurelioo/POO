@@ -1,9 +1,4 @@
 package hotelaria;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Date;
 
 
@@ -36,6 +31,9 @@ public class Reserva {
 	    this.valorPago = valorPago;
 	}
 
+	public Reserva(int codigo) {
+	    this.codigo = codigo;
+	}
 
 	public int getCodigo() {
 		return codigo;

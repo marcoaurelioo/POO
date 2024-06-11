@@ -71,7 +71,7 @@ public class HospedeDataDao implements dao<Hospede>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null; // Hóspede não encontrado
+        return null; 
     }
 
 

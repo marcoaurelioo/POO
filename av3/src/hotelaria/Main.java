@@ -13,18 +13,20 @@ import Services.ServicoDataDao;
 import Services.QuartoDataDao;
 import Services.CategoriaItemDataDao;
 import Services.ReservaDataDao;
+import Services.ConsumoDataDao;
 
 public class Main {
 
 	public static void main(String[] args) {
 		ReservaDataDao dao = new ReservaDataDao();
+		ConsumoDataDao dao1 = new ConsumoDataDao();
 		
 		Categoria categoria = new Categoria(1, "Luxo", 200);
 		Quarto quarto = new Quarto(101, categoria, "Disponível");
 		Hospede hospede = new Hospede("Maria", "maria@gmail.com", "12345678901", "Rua A, 123");
 		Funcionario funcionarioReserva = new Funcionario("João", "joao@gmail.com", "98765432101", "Recepção");
         Funcionario funcionarioFechamento = new Funcionario("Pedro", "pedro@gmail.com", "98765432102", "Recepção");
-        
+        Item item1 = new Item(1, "teste", 203);
         Calendar calendar = new GregorianCalendar(2020, 0, 10); 
         Date dataEntrada = calendar.getTime();
         calendar = new GregorianCalendar(2020, 0, 20);
@@ -33,12 +35,19 @@ public class Main {
         Date dataCheckin = calendar.getTime();
         calendar = new GregorianCalendar(2020, 0, 20);
         Date dataCheckout = calendar.getTime();
+        calendar = new GregorianCalendar(2020, 0, 14);
+        Date dataConsumo = calendar.getTime();
+        
         
         Reserva reserva = new Reserva(1, hospede, quarto, funcionarioReserva, funcionarioFechamento,
                 dataEntrada, dataSaida, dataCheckin, dataCheckout, 150, 0);
         
+        Consumo consumo = new Consumo(item1, reserva, 1, dataConsumo);
+        
 		dao.cadastrar(reserva);
-		dao.listar(reserva);
+		dao1.cadastrar(consumo);
+		dao1.listar(consumo);
+		
 	}
 
 }

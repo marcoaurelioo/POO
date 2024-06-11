@@ -1,2 +1,0 @@
-1004, 2, Ocupado
-102, 2, Ocupado
