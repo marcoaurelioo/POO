@@ -1,2 +1,1 @@
-TV, Luxo, 10
-Geladeira, Econômico, 5
+Smartphone, Eletrônicos, 10

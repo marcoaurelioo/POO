@@ -59,11 +59,14 @@ public class CategoriaItemDataDao implements dao<CategoriaItem>{
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(", ");
+
+                // Certifique-se de que há dados suficientes para criar um objeto CategoriaItem
                 if (data.length >= 3) {
                     String descricaoItem = data[0].trim();
                     String descricaoCategoria = data[1].trim();
                     int quantidade = Integer.parseInt(data[2].trim());
 
+                    // Verifica se os dados do CategoriaItem no arquivo correspondem aos dados do CategoriaItem que está sendo consultado
                     if (descricaoItem.equals(categoriaItem.getItem().getDescricao()) &&
                         descricaoCategoria.equals(categoriaItem.getCategoria().getDescricao()) &&
                         quantidade == categoriaItem.getQuantidade()) {
@@ -79,64 +82,69 @@ public class CategoriaItemDataDao implements dao<CategoriaItem>{
 
 
 
-public boolean editar(CategoriaItem categoriaItem) {
-    if (consultar(categoriaItem) != null) {
-        System.out.println("CategoriaItem encontrado. Prosseguindo com a edição...");
-    } else {
-        System.out.println("CategoriaItem não encontrado.");
-        return false;
-    }
 
-    // Arquivo temporário
-    String tempFile = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\temp.txt";
-    boolean houveEdicao = false;
-
-    try (FileReader fileReader = new FileReader(CAMINHO);
-         BufferedReader bufferedReader = new BufferedReader(fileReader);
-         FileWriter fileWriter = new FileWriter(tempFile);
-         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-         Scanner scanner = new Scanner(System.in)) {
-
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            String[] data = line.split(",");
-
-            // Verifica se os dados do categoriaItem no arquivo correspondem aos dados do categoriaItem que está sendo editado
-            if (data.length >= 3 && data[2].trim().equals(categoriaItem.getItem().getDescricao()) &&
-                data.length >= 4 && data[3].trim().equals(categoriaItem.getCategoria().getDescricao())) { 
-
-                System.out.println("Novo código:");
-                String novoItem = scanner.nextLine().trim();
-                System.out.println("Nova categoria:");
-                String novaCategoria = scanner.nextLine().trim();
-                System.out.println("Nova quantidade:");
-                int novaQuantidade = Integer.parseInt(scanner.nextLine().trim());
-
-                // Edita as informações
-                bufferedWriter.write(novoItem + ", " + novaCategoria + ", " + novaQuantidade);
-                bufferedWriter.newLine();
-                houveEdicao = true;
-            } else {
-                // Mantém a linha original no arquivo temporário
-                bufferedWriter.write(line);
-                bufferedWriter.newLine();
-            }
+    public boolean editar(CategoriaItem categoriaItem) {
+        if (consultar(categoriaItem) != null) {
+            System.out.println("CategoriaItem encontrado. Prosseguindo com a edição...");
+        } else {
+            System.out.println("CategoriaItem não encontrado.");
+            return false;
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+
+        // Arquivo temporário
+        String tempFile = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\temp.txt";
+        boolean houveEdicao = false;
+
+        try (FileReader fileReader = new FileReader(CAMINHO);
+             BufferedReader bufferedReader = new BufferedReader(fileReader);
+             FileWriter fileWriter = new FileWriter(tempFile);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+             Scanner scanner = new Scanner(System.in)) {
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                // Verifica se os dados do categoriaItem no arquivo correspondem aos dados do categoriaItem que está sendo editado
+                if (data.length >= 3 && data[2].trim().equals(categoriaItem.getItem().getDescricao()) &&
+                    data.length >= 4 && data[3].trim().equals(categoriaItem.getCategoria().getDescricao())) { 
+
+                    System.out.println("Novo código:");
+                    String novoItem = scanner.nextLine().trim();
+                    System.out.println("Nova categoria:");
+                    String novaCategoria = scanner.nextLine().trim();
+                    System.out.println("Nova quantidade:");
+                    int novaQuantidade = Integer.parseInt(scanner.nextLine().trim());
+
+                    // Edita as informações
+                    bufferedWriter.write(novoItem + ", " + novaCategoria + ", " + novaQuantidade);
+                    bufferedWriter.newLine();
+                    houveEdicao = true;
+                } else {
+                    // Mantém a linha original no arquivo temporário
+                    bufferedWriter.write(line);
+                    bufferedWriter.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Substitui o arquivo original pelo temporário
+        File originalFile = new File(CAMINHO);
+        File temp = new File(tempFile);
+        if (originalFile.delete() && temp.renameTo(originalFile)) {
+            System.out.println("Edição concluída com sucesso.");
+        } else {
+            System.out.println("Falha ao editar o categoriaItem.");
+        }
+
+        return houveEdicao;
     }
 
-    // Substitui o arquivo original pelo temporário
-    File originalFile = new File(CAMINHO);
-    File temp = new File(tempFile);
-    if (originalFile.delete() && temp.renameTo(originalFile)) {
-        System.out.println("Edição concluída com sucesso.");
-    } else {
-        System.out.println("Falha ao editar o categoriaItem.");
-    }
 
-    return houveEdicao;
-}
+
+
     
 public ArrayList<CategoriaItem> listar(CategoriaItem categoriaItem) {
     ArrayList<CategoriaItem> categoriaItems = new ArrayList<>();
@@ -144,32 +152,34 @@ public ArrayList<CategoriaItem> listar(CategoriaItem categoriaItem) {
     try (FileReader fileReader = new FileReader(CAMINHO);
          BufferedReader bufferedReader = new BufferedReader(fileReader)) {
         String line;
+        int contador = 1;
+        System.out.println("Lista de Categoria Itens:");
         while ((line = bufferedReader.readLine()) != null) {
             String[] data = line.split(", ");
+
+            // Certifique-se de que há dados suficientes para criar um objeto CategoriaItem
             if (data.length >= 3) {
                 String descricaoItem = data[0].trim();
                 String descricaoCategoria = data[1].trim();
                 int quantidade = Integer.parseInt(data[2].trim());
 
-                // Crie os objetos Item e Categoria usando apenas a descrição
+                // Crie os objetos Item e Categoria usando apenas as descrições
                 Item item = new Item(descricaoItem);
                 Categoria categoria = new Categoria(descricaoCategoria);
 
                 // Crie o objeto CategoriaItem
                 CategoriaItem novoCategoriaItem = new CategoriaItem(item, categoria, quantidade);
                 categoriaItems.add(novoCategoriaItem);
+
+                // Exiba os itens com numeração
+                System.out.println(contador + " - Item: " + descricaoItem + ", Categoria: " + descricaoCategoria + ", Quantidade: " + quantidade);
+                contador++;
             }
         }
     } catch (IOException e) {
         e.printStackTrace();
     }
 
-    // Exibir as descrições dos itens e categorias com numeração
-    int contador = 1;
-    for (CategoriaItem ci : categoriaItems) {
-        System.out.println(contador + " - Item: " + ci.getItem().getDescricao() + ", Categoria: " + ci.getCategoria().getDescricao() + ", Quantidade: " + ci.getQuantidade());
-        contador++;
-    }
     return categoriaItems;
 }
 

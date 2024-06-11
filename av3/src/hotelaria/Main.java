@@ -14,15 +14,16 @@ import Services.CategoriaItemDataDao;
 public class Main {
 
     public static void main(String[] args) {
-        FuncionarioDataDao dao = new FuncionarioDataDao();
+        CategoriaItemDataDao dao = new CategoriaItemDataDao();
 
-        // Cadastro de funcionários
-        Funcionario funcionario1 = new Funcionario("Maria", "joao@example.com", "11111111111", "Limpeza");
+        // Cadastro de itens em categorias
+        Categoria categoria1 = new Categoria("Eletrônicos");
+        Item item1 = new Item("Smartphone");
+        CategoriaItem categoriaItem1 = new CategoriaItem(item1, categoria1, 10);
 
-        dao.cadastrar(funcionario1);
-        
-        
-        dao.listar(funcionario1);
+        dao.cadastrar(categoriaItem1);
+
+        dao.editar(categoriaItem1);
 
     }
 

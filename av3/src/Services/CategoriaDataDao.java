@@ -58,10 +58,12 @@ public class CategoriaDataDao implements dao<Categoria>{
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
 
-                
+                // Verifica se os dados da categoria no arquivo correspondem aos dados da categoria que está sendo consultada
                 if (data.length >= 1 && Integer.parseInt(data[0].trim()) == categoria.getCodigo()) {
-                    if (data.length >= 3 && Double.parseDouble(data[2].trim()) == categoria.getValor()) {
-                        return categoria;
+                    if (data.length >= 2 && data[1].trim().equals(categoria.getDescricao())) {
+                        if (data.length >= 3 && Double.parseDouble(data[2].trim()) == categoria.getValor()) {
+                            return categoria;
+                        }
                     }
                 }
             }
@@ -144,6 +146,8 @@ public class CategoriaDataDao implements dao<Categoria>{
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             String line;
+            int contador = 1;
+            System.out.println("Lista de Categorias:");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(", ");
 
@@ -151,13 +155,18 @@ public class CategoriaDataDao implements dao<Categoria>{
                 String descricao = data[1].trim();
                 double valor = Double.parseDouble(data[2].trim());
 
-                Categoria novoCategoria = new Categoria(codigo, descricao, valor);
-                categorias.add(novoCategoria);
+                Categoria novaCategoria = new Categoria(codigo, descricao, valor);
+                categorias.add(novaCategoria);
+
+                // Exibir cada categoria com numeração
+                System.out.println(contador + " - Código: " + novaCategoria.getCodigo() + ", Descrição: " + novaCategoria.getDescricao() + ", Valor: " + novaCategoria.getValor());
+                contador++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return categorias;
+
     }
 }
