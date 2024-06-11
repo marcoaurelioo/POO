@@ -18,7 +18,7 @@ import hotelaria.Servico;
 
 
 public class ConsumoServicoDataDao implements dao<ConsumoServico>{
-    private static final String CAMINHO = "C:\\Users\\Marco Aurélio\\Desktop\\POO\\av3\\src\\db\\ConsumoServico.txt";
+    private static final String CAMINHO = "db\\ConsumoServico.txt";
     
     public class DaoException extends Exception {
         public DaoException(String message) {
